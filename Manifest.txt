@@ -1,0 +1,8 @@
+.autotest
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+bin/bing
+lib/bing.rb
+test/test_bing.rb
