@@ -1,8 +1,7 @@
-require "test/unit"
-require "bing"
+require 'helper'
 
 class TestBing < Test::Unit::TestCase
-  def test_sanity
-    flunk "write tests or I will kneecap you"
+  def test_defines_version
+    assert Bing::VERSION.to_f > 0.0
   end
 end

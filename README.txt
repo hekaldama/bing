@@ -16,7 +16,9 @@ FIX (describe your package)
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+For development:
+* rubygems >= 1.8.2
+* isolate >= 3.1.1
 
 == INSTALL:
 

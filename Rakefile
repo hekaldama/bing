@@ -3,20 +3,12 @@
 require 'rubygems'
 require 'hoe'
 
-# Hoe.plugin :compiler
-# Hoe.plugin :gem_prelude_sucks
-# Hoe.plugin :inline
-# Hoe.plugin :racc
-# Hoe.plugin :rubyforge
+Hoe.plugin :isolate
 
 Hoe.spec 'bing' do
-  # HEY! If you fill these out in ~/.hoe_template/Rakefile.erb then
-  # you'll never have to touch them again!
-  # (delete this comment too, of course)
+  developer('Adam Avilla', 'adam@avil.la')
 
-  # developer('FIX', 'FIX@example.com')
-
-  # self.rubyforge_name = 'bingx' # if different than 'bing'
+  self.extra_deps << ['net-http-persistent', '1.8' ]
 end
 
 # vim: syntax=ruby
