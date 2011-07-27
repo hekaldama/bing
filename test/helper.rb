@@ -1,5 +1,4 @@
-require "test/unit"
+require "minitest/autorun"
 require "bing"
-require "bing/map"
-require "bing/map/location"
+require "bing/location"
 

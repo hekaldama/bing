@@ -1,7 +1,19 @@
 require 'helper'
 
-class TestBing < Test::Unit::TestCase
+class TestBing < MiniTest::Unit::TestCase
+
   def test_defines_version
     assert Bing::VERSION.to_f > 0.0
   end
+
+  def test_setting_config
+    Bing.config = {}
+    assert_equal Bing.config, Bing::DEFAULTS
+
+    Bing.config[:api_key] = 'frank'
+    assert_equal 'frank', Bing.config[:api_key]
+    refute_equal Bing.config, Bing::DEFAULTS
+  end
+
 end
+

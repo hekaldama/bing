@@ -1,6 +1,4 @@
 class Bing::Map::Location < Bing::Map
-  self.config[:path] = '/REST/v1/Locations'
-
   def self.find address
     url = URI.parse(self.config[:host]).merge "#{path}?q=#{CGI.escape address}&key=#{self.config[:key]}"
 
