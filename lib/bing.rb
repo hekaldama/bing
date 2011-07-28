@@ -1,12 +1,14 @@
 require 'rubygems'
+require 'net/http/persistent'
+require 'uri'
 require 'json'
-require 'rest_client'
 
 module Bing
+
   VERSION = '1.0.0'
 
   DEFAULTS = {
-    :api_key    => '',
+    :api_key    => 'AtsQ7PXwSqL266EUdxMYj3b4-H5A6ubkf8DwH-B4k3rVmmPycUrhmH-lZKHeWXm-',
     :api_uri    => URI.parse('http://api.bing.net'),
     :connection => :persistent,
     :logger     => 'stdout',
@@ -19,9 +21,6 @@ module Bing
 
   @config = DEFAULTS.dup
 
-  RestClient.log        = config[:logger]
-  #RestClient.connection = config[:connection]
-
   ##
   # Set the configuration for this instance of bing.
 
@@ -31,3 +30,8 @@ module Bing
 
 end
 
+require 'errors'
+require 'core_ext'
+require 'bing/request'
+
+include Request
