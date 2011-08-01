@@ -32,6 +32,8 @@ end
 
 require 'errors'
 require 'core_ext'
-require 'bing/request'
+require 'request'
+require 'formatting_helper'
 
 include Request
+include FormattingHelper

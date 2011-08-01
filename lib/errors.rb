@@ -1,8 +1,14 @@
 ##
-# DO NOT use this class. It is too generic.
+# DO NOT use these classes. They are too generic.
 
 class ServiceError < StandardError
   def status() 500 end
+end
+
+class ResourceMissing < StandardError
+  def status() 502 end
+
+  def message() 'Resource is empty or nil.' end
 end
 
 ##
@@ -42,4 +48,8 @@ class BadGateway < ServiceError
 
   def status() 502 end
 end
+
+class ItineraryResourceMissing < ResourceMissing; end
+class LocationResourceMissing < ResourceMissing; end
+class RouteResourceMissing < ResourceMissing; end
 

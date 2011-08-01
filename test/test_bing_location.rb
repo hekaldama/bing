@@ -2,7 +2,7 @@ require 'helper'
 
 class TestBingLocation < MiniTest::Unit::TestCase
 
-  def test_cls_find_by_query_successful
+  def test_cls_find_successful
     body = {
       'resourceSets' => [
         'resources' => [
@@ -13,16 +13,16 @@ class TestBingLocation < MiniTest::Unit::TestCase
 
     mock_map_request 200, '/REST/v1/Locations', body
 
-    locs = Bing::Location.find_by_query '123'
+    locs = Bing::Location.find :query => '123'
 
     assert_equal 'full name', locs.first.full_name
   end
 
-  def test_cls_find_by_query_failure
+  def test_cls_find_failure
     mock_map_request 400, '/REST/v1/Locations', '{}'
 
     assert_raises BadGateway do
-      Bing::Location.find_by_query '123'
+      Bing::Location.find :query => '123'
     end
   end
 
@@ -35,8 +35,7 @@ class TestBingLocation < MiniTest::Unit::TestCase
 
     bl = Bing::Location.new resource
 
-    assert_equal 123, bl.lat
-    assert_equal 456, bl.lon
+    assert_equal [123, 456], bl.coordinates
   end
 
   def test_initialize_with_address
@@ -92,6 +91,12 @@ class TestBingLocation < MiniTest::Unit::TestCase
     bl = Bing::Location.new resource
 
     assert_equal '123 street, ca', bl.full_name
+  end
+
+  def test_initialize_without_resource_raises
+    assert_raises LocationResourceMissing do
+      Bing::Location.new nil
+    end
   end
 
 end

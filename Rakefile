@@ -23,9 +23,9 @@ Hoe.spec 'bing' do
   self.test_prelude = 'gem "minitest"'
 end
 
-desc "run irb with bing loaded and happy"
+desc "run irb with bing lib in path."
 task :irb do
-  sh "irb -Ilib -rbing -rbing/location"
+  sh "irb -Ilib"
 end
 
 desc 'run autotest'
