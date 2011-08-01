@@ -1,18 +1,32 @@
 = bing
 
-* FIX (url)
+* https://github.com/hekaldama/bing
 
 == DESCRIPTION:
 
-FIX (describe your package)
+Bing api client library that exposes all of Bing's api features.
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+* Uses Net::HTTP::Persistent for connections to Bing.
+* Shipped with a community Bing api key. Only used for testing.
+  Use in production may fail.
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+# For locations
+require 'bing/location'
+
+Bing.config[:api_key] = 'my_key'
+
+Bing::Location.find :query => 'Strawberry, CA'
+
+# For routing
+require 'bing/route'
+
+Bing.config[:api_key] = 'my_key'
+
+Bing::Route.find :waypoints => ['Shasta, CA', 'Chico, CA', 'Los Angeles, CA']
 
 == REQUIREMENTS:
 
@@ -22,7 +36,7 @@ For development:
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+[sudo] gem install bing
 
 == DEVELOPERS:
 
@@ -30,14 +44,14 @@ After checking out the source, run:
 
   $ rake newb
 
-This task will install any missing dependencies, run the tests/specs,
-and generate the RDoc.
+This task will install any missing dependencies, run the tests, and generate the
+RDoc.
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2011 FIX
+Copyright (c) 2011 Adam Avilla
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
