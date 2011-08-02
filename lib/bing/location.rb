@@ -1,5 +1,11 @@
 require 'bing'
 
+##
+# Responsible for obtaining a location based off of data passed in.
+# Most common method is to do:
+#
+# Bing::Location.find :query => '123 Address City State'
+
 class Bing::Location
 
   ##
@@ -16,9 +22,9 @@ class Bing::Location
             "#{PATH}?key=#{Bing.config[:api_key]}&#{opts.to_param}"
           )
 
-    response = JSON.parse get(uri).body
+    body = JSON.parse get(uri).body
 
-    response['resourceSets'].first['resources'].map do |resource|
+    body['resourceSets'].first['resources'].map do |resource|
       new resource
     end.compact
   end

@@ -25,7 +25,13 @@ end
 
 desc "run irb with bing lib in path."
 task :irb do
-  sh "irb -Ilib"
+  ARGV.clear
+  $: << "lib"
+
+  require 'irb'
+  require 'bing'
+
+  IRB.start
 end
 
 desc 'run autotest'

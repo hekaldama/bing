@@ -40,9 +40,9 @@ class Bing::Route
             "#{PATH}?key=#{Bing.config[:api_key]}&#{opts.to_param}&#{waypoints}"
           )
 
-    response = JSON.parse get(uri).body
+    body = JSON.parse get(uri).body
 
-    response['resourceSets'].first['resources'].map do |resource|
+    body['resourceSets'].first['resources'].map do |resource|
       new resource
     end.compact
   end
