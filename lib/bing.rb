@@ -30,10 +30,10 @@ module Bing
 
 end
 
-require 'errors'
-require 'core_ext'
-require 'request'
-require 'formatting_helper'
+require 'bing/errors'
+require 'bing/core_ext'
+require 'bing/request'
+require 'bing/formatting_helper'
 
-include Request
-include FormattingHelper
+include Bing::Request
+include Bing::FormattingHelper

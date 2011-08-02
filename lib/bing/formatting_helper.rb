@@ -1,4 +1,4 @@
-module FormattingHelper
+module Bing::FormattingHelper
 
   def bbox box
     south, west, north, east = *box

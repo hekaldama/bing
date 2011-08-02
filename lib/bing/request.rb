@@ -1,4 +1,4 @@
-module Request
+module Bing::Request
 
   HTTP = Net::HTTP::Persistent.new
   USER_AGENT = "Bing Client Version: #{Bing::VERSION}"
