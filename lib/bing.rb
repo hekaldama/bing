@@ -5,7 +5,7 @@ require 'json'
 
 module Bing
 
-  VERSION = '1.0.0'
+  VERSION = '0.1.0'
 
   DEFAULTS = {
     :api_key => 'AtsQ7PXwSqL266EUdxMYj3b4-H5A6ubkf8DwH-B4k3rVmmPycUrhmH-lZKHeWXm-',
