@@ -12,8 +12,8 @@ Hoe.spec 'bing' do
 
   self.testlib = :minitest
 
-  self.extra_deps << ['net-http-persistent', '1.8']
-  self.extra_deps << ['json', '~> 1.4.6']
+  self.extra_deps << ['net-http-persistent', '>= 1.6']
+  self.extra_deps << ['json', '>= 1.5.3']
 
   self.extra_dev_deps << ['minitest']
   self.extra_dev_deps << ['git']
@@ -29,6 +29,11 @@ task :autotest do
   sh "rake isolate:sh[autotest]"
 end
 
+desc "create Manifest.txt with git-ls-files."
+task :create_manifest do
+  sh "git ls-files > Manifest.txt"
+end
+
 desc "run irb with bing lib in path."
 task :irb do
   ARGV.clear
@@ -38,11 +43,6 @@ task :irb do
   require 'bing'
 
   IRB.start
-end
-
-desc "create Manifest.txt with git-ls-files."
-task :create_manifest do
-  sh "git ls-files > Manifest.txt"
 end
 
 namespace :git do
