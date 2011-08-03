@@ -1,6 +1,24 @@
-=== 1.0.0 / 2011-07-25
+=== 0.1.0 / 2011-07-25
 
-* 1 major enhancement
+* 6 minor enhancement(s):
 
-  * Birthday!
+  * Added gitignore.
+  * Added more tests, more data coming back from Location and beginnings of Route.
+  * Improved coverage. Added route class and cleaned up some things.
+  * MiniTest is working, autotest is working, structure is getting better and coverage is happening.
+  * Moved everything into the lib/bing dir.
+  * Test helper clean up and README update.
+
+* 0 bug fix(s):
+
+
+* 7 unknown:
+
+  * Commiting what I have so far. Still a wip.
+  * Flattened the structure
+  * Little cleanup.
+  * Nothing significant.
+  * Prepped for release-0.1.0
+  * Rm'd unecessary test files.
+  * Updated manifest. Added task to create manifest and added autotest task.
 
