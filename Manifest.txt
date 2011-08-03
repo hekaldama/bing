@@ -4,7 +4,6 @@ History.txt
 Manifest.txt
 README.txt
 Rakefile
-bin/bing
 lib/bing.rb
 lib/bing/core_ext.rb
 lib/bing/errors.rb
