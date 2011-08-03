@@ -1,3 +1,12 @@
+=== 0.1.1 / 2011-07-25
+* 5 unknown:
+
+  * Make dep gems comply with my needs
+  * Rm'd the bin, and added changelog generation.
+  * Updated History.
+  * Updated manifest.
+  * Updated manifest. Added task to create manifest and added autotest task.
+
 === 0.1.0 / 2011-07-25
 
 * 6 minor enhancement(s):
