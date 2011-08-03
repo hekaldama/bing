@@ -23,6 +23,11 @@ Hoe.spec 'bing' do
   self.test_prelude = 'gem "minitest"'
 end
 
+desc 'run autotest'
+task :autotest do
+  sh "rake isolate:sh[autotest]"
+end
+
 desc "run irb with bing lib in path."
 task :irb do
   ARGV.clear
@@ -34,9 +39,9 @@ task :irb do
   IRB.start
 end
 
-desc 'run autotest'
-task :autotest do
-  sh "rake isolate:sh[autotest]"
+desc "create Manifest.txt with git-ls-files."
+task :create_manifest do
+  sh "git ls-files > Manifest.txt"
 end
 
 # vim: syntax=ruby
