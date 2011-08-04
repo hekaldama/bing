@@ -21,7 +21,7 @@ class TestBingLocation < MiniTest::Unit::TestCase
   def test_cls_find_failure
     mock_map_request 400, '/REST/v1/Locations', '{}'
 
-    assert_raises BadGateway do
+    assert_raises Bing::BadGateway do
       Bing::Location.find :query => '123'
     end
   end
@@ -94,7 +94,7 @@ class TestBingLocation < MiniTest::Unit::TestCase
   end
 
   def test_initialize_without_resource_raises
-    assert_raises LocationResourceMissing do
+    assert_raises Bing::LocationResourceMissing do
       Bing::Location.new nil
     end
   end

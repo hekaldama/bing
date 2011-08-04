@@ -13,7 +13,7 @@ class Bing::Request
   def self.get uri
     response = HTTP.request uri
 
-    raise BadGateway.bad_response(response.code, uri) unless
+    raise Bing::BadGateway.bad_response(response.code, uri) unless
       response.code =~ /20\d/
 
     response

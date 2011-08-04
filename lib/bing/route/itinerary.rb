@@ -8,7 +8,7 @@ class Bing::Route::Itinerary
   attr_reader :travel_mode
 
   def initialize resource
-    raise ItineraryResourceMissing if resource.blank?
+    raise Bing::ItineraryResourceMissing if resource.blank?
 
     @distance    = resource['travelDistance']
     @duration    = resource['travelDuration']

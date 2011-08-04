@@ -9,7 +9,7 @@ class TestRequest < MiniTest::Unit::TestCase
   def test_get_failure
     stub_request(:any, "http://example.com").to_return(:status => 500)
 
-    assert_raises BadGateway do
+    assert_raises Bing::BadGateway do
       Bing::Request.get @uri
     end
   end

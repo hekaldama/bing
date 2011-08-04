@@ -30,7 +30,5 @@ end
 
 require 'bing/core_ext'
 require 'bing/errors'
-require 'bing/formatting_helper'
 require 'bing/request'
 
-include Bing::FormattingHelper

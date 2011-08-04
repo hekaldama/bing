@@ -1,11 +1,6 @@
-require 'bing'
+require 'bing/rest_resource'
 
-class Bing::Route
-
-  ##
-  # Path to route resource.
-
-  PATH = '/REST/v1/Routes'
+class Bing::Route < Bing::RestResource
 
   ##
   # === Description
@@ -35,19 +30,18 @@ class Bing::Route
 
   def self.find opts
     waypoints = format_waypoints opts.delete :waypoints
+    params    = [opts.to_param, waypoints].join '&'
 
-    uri = Bing.config[:map_uri].merge(
-            "#{PATH}?key=#{Bing.config[:api_key]}&#{opts.to_param}&#{waypoints}"
-          )
-
-    body = JSON.parse Bing::Request.get(uri).body
-
-    body['resourceSets'].first['resources'].map do |resource|
-      new resource
-    end.compact
+    map_find params
   end
 
-  attr_reader :bounding_box
+  ##
+  # Path to route resource.
+
+  def self.path
+    "#{BASE_PATH}/Routes"
+  end
+
   attr_reader :distance_unit
   attr_reader :duration_unit
   attr_reader :ending_coordinates
@@ -58,7 +52,7 @@ class Bing::Route
   attr_reader :type
 
   def initialize resource
-    raise RouteResourceMissing if resource.blank?
+    raise Bing::RouteResourceMissing if resource.blank?
 
     @distance_unit  = resource['distanceUnit']
     @duration_unit  = resource['durationUnit']

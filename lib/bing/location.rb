@@ -1,4 +1,4 @@
-require 'bing'
+require 'bing/rest_resource'
 
 ##
 # Responsible for obtaining a location based off of data passed in.
@@ -6,31 +6,24 @@ require 'bing'
 #
 # Bing::Location.find :query => '123 Address City State'
 
-class Bing::Location
-
-  ##
-  # Path to location resource.
-
-  PATH = '/REST/v1/Locations'
+class Bing::Location < Bing::RestResource
 
   ##
   # Will find locations based off of +query+ and return an array of
   # Bing::Location objects.
 
   def self.find opts
-    uri = Bing.config[:map_uri].merge(
-            "#{PATH}?key=#{Bing.config[:api_key]}&#{opts.to_param}"
-          )
+    map_find opts.to_param
+  end
 
-    body = JSON.parse Bing::Request.get(uri).body
+  ##
+  # Path to route resource.
 
-    body['resourceSets'].first['resources'].map do |resource|
-      new resource
-    end.compact
+  def self.path
+    "#{BASE_PATH}/Locations"
   end
 
   attr_reader :address
-  attr_reader :bounding_box
   attr_reader :canonical_description
   attr_reader :coordinates
   attr_reader :city
@@ -42,7 +35,7 @@ class Bing::Location
   attr_reader :zip
 
   def initialize resource
-    raise LocationResourceMissing if resource.blank?
+    raise Bing::LocationResourceMissing if resource.blank?
 
     @confidence  = resource['confidence']
     @entity_type = resource['entityType']

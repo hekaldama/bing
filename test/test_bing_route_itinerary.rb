@@ -51,7 +51,7 @@ class TestBingRouteItinerary < MiniTest::Unit::TestCase
   end
 
   def test_initialize_without_resource_raises
-    assert_raises ItineraryResourceMissing do
+    assert_raises Bing::ItineraryResourceMissing do
       Bing::Route::Itinerary.new nil
     end
   end
