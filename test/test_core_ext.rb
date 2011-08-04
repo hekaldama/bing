@@ -10,10 +10,10 @@ class TestCoreExt < MiniTest::Unit::TestCase
 
   def test_to_param
     query = {:hi_mom => true}
-    assert_equal 'hiMom=true', query.to_param
+    assert_equal 'hiMom=true', query.to_lower_camelized_param
 
     query[:yep] = false
-    assert_equal 'hiMom=true&yep=false', query.to_param
+    assert_equal 'hiMom=true&yep=false', query.to_lower_camelized_param
   end
 
 end

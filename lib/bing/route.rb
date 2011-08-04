@@ -30,7 +30,7 @@ class Bing::Route < Bing::RestResource
 
   def self.find opts
     waypoints = format_waypoints opts.delete :waypoints
-    params    = [opts.to_param, waypoints].join '&'
+    params    = [opts.to_lower_camelized_param, waypoints].join '&'
 
     map_find params
   end

@@ -13,7 +13,7 @@ class Bing::Location < Bing::RestResource
   # Bing::Location objects.
 
   def self.find opts
-    map_find opts.to_param
+    map_find opts.to_lower_camelized_param
   end
 
   ##
