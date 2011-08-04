@@ -8,9 +8,10 @@ module Bing
   VERSION = '0.1.1'
 
   DEFAULTS = {
-    :api_key => 'AtsQ7PXwSqL266EUdxMYj3b4-H5A6ubkf8DwH-B4k3rVmmPycUrhmH-lZKHeWXm-',
-    :api_uri => URI.parse('http://api.bing.net'),
-    :map_uri => URI.parse('http://dev.virtualearth.net'),
+    :api_key     => 'AtsQ7PXwSqL266EUdxMYj3b4-H5A6ubkf8DwH-B4k3rVmmPycUrhmH-lZKHeWXm-',
+    :api_uri     => URI.parse('http://api.bing.net'),
+    :api_version => 'v1',
+    :map_uri     => URI.parse('http://dev.virtualearth.net'),
   }
 
   class << self
