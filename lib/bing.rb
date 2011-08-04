@@ -34,5 +34,3 @@ require 'bing/formatting_helper'
 require 'bing/request'
 
 include Bing::FormattingHelper
-# TODO figure out how to allow user defined request object.
-include Bing::Request

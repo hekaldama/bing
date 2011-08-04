@@ -22,7 +22,7 @@ class Bing::Location
             "#{PATH}?key=#{Bing.config[:api_key]}&#{opts.to_param}"
           )
 
-    body = JSON.parse get(uri).body
+    body = JSON.parse Bing::Request.get(uri).body
 
     body['resourceSets'].first['resources'].map do |resource|
       new resource

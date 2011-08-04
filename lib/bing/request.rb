@@ -1,7 +1,7 @@
 ##
 # Responsible for making requests to Bing. Uses persistent HTTP connections.
 
-module Bing::Request
+class Bing::Request
 
   HTTP = Net::HTTP::Persistent.new
   USER_AGENT = "Bing Client Version: #{Bing::VERSION}"
@@ -10,7 +10,7 @@ module Bing::Request
   ##
   # Perform a get request and ensure that the response.code == 20\d,
   # otherwise raise a BadGateway.
-  def get uri
+  def self.get uri
     response = HTTP.request uri
 
     raise BadGateway.bad_response(response.code, uri) unless
