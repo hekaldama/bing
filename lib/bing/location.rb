@@ -20,7 +20,7 @@ class Bing::Location < Bing::RestResource
   # Path to route resource.
 
   def self.path
-    "#{BASE_PATH}/Locations"
+    super '/Locations'
   end
 
   attr_reader :address

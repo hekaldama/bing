@@ -39,7 +39,7 @@ class Bing::Route < Bing::RestResource
   # Path to route resource.
 
   def self.path
-    "#{BASE_PATH}/Routes"
+    super '/Routes'
   end
 
   attr_reader :distance_unit

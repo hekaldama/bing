@@ -2,6 +2,8 @@ require 'helper'
 
 class TestBingLocation < MiniTest::Unit::TestCase
 
+  BL = Bing::Location
+
   def test_cls_find_successful
     body = {
       'resourceSets' => [
@@ -11,19 +13,23 @@ class TestBingLocation < MiniTest::Unit::TestCase
       ]
     }.to_json
 
-    mock_map_request 200, '/REST/v1/Locations', body
+    mock_map_request 200, BL.path, body
 
-    locs = Bing::Location.find :query => '123'
+    locs = BL.find :query => '123'
 
     assert_equal 'full name', locs.first.full_name
   end
 
   def test_cls_find_failure
-    mock_map_request 400, '/REST/v1/Locations', '{}'
+    mock_map_request 400, BL.path, '{}'
 
     assert_raises Bing::BadGateway do
-      Bing::Location.find :query => '123'
+      BL.find :query => '123'
     end
+  end
+
+  def test_cls_path
+    assert_match %r[Locations], BL.path
   end
 
   def test_initialize_with_coordinates
@@ -33,7 +39,7 @@ class TestBingLocation < MiniTest::Unit::TestCase
       }
     }
 
-    bl = Bing::Location.new resource
+    bl = BL.new resource
 
     assert_equal [123, 456], bl.coordinates
   end
@@ -49,7 +55,7 @@ class TestBingLocation < MiniTest::Unit::TestCase
       }
     }
 
-    bl = Bing::Location.new resource
+    bl = BL.new resource
 
     assert_equal 'address', bl.address
     assert_equal 'city', bl.city
@@ -61,7 +67,7 @@ class TestBingLocation < MiniTest::Unit::TestCase
   def test_initialize_with_confidence
     resource = { 'confidence' => 'High' }
 
-    bl = Bing::Location.new resource
+    bl = BL.new resource
 
     assert_equal 'High', bl.confidence
   end
@@ -69,7 +75,7 @@ class TestBingLocation < MiniTest::Unit::TestCase
   def test_initialize_with_bbox
     resource = { 'bbox' => %w[south west north east] }
 
-    bl = Bing::Location.new resource
+    bl = BL.new resource
 
     assert_equal 'north', bl.bounding_box[:north]
     assert_equal 'east',  bl.bounding_box[:east]
@@ -80,7 +86,7 @@ class TestBingLocation < MiniTest::Unit::TestCase
   def test_initialize_with_entity_type
     resource = { 'entityType' => 'Postal' }
 
-    bl = Bing::Location.new resource
+    bl = BL.new resource
 
     assert_equal 'Postal', bl.entity_type
   end
@@ -88,14 +94,14 @@ class TestBingLocation < MiniTest::Unit::TestCase
   def test_initialize_with_full_name
     resource = { 'name' => '123 street, ca' }
 
-    bl = Bing::Location.new resource
+    bl = BL.new resource
 
     assert_equal '123 street, ca', bl.full_name
   end
 
   def test_initialize_without_resource_raises
     assert_raises Bing::LocationResourceMissing do
-      Bing::Location.new nil
+      BL.new nil
     end
   end
 

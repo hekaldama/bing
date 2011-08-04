@@ -5,9 +5,7 @@ class Bing::RestResource
   ##
   # Base Bing Rest route.
 
-  BASE_PATH = '/REST/v1'
-
-  attr_reader :bounding_box
+  BASE_PATH = "/REST/#{Bing.config[:api_version]}"
 
   def self._find uri
     body = JSON.parse Bing::Request.get(uri).body
@@ -27,9 +25,14 @@ class Bing::RestResource
     _find map_uri params
   end
 
-  def self.path
-    raise 'Subclasses resposibility to define #path'
+  def self.path subclass_path = nil
+    "#{BASE_PATH}#{subclass_path}"
   end
+
+  ##
+  # The map's bounding box.
+
+  attr_reader :bounding_box
 
   ##
   # Decipher bounding box from bbox in Bing response.
