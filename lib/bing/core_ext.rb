@@ -1,4 +1,4 @@
-# core extensions to ruby ripped from Rails. Probably could be optimized.
+# core extensions to ruby.
 
 unless respond_to? :blank?
   class Object

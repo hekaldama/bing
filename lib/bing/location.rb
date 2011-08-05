@@ -2,15 +2,16 @@ require 'bing/rest_resource'
 
 ##
 # Responsible for obtaining a location based off of data passed in.
-# Most common method is to do:
-#
-# Bing::Location.find :query => '123 Address City State'
 
 class Bing::Location < Bing::RestResource
 
   ##
   # Will find locations based off of +query+ and return an array of
-  # Bing::Location objects.
+  # Bing::Location objects. Will support any param that bing supports.
+  #
+  # === Example
+  #
+  # Bing::Location.find :query => '123 Address City State'
 
   def self.find opts
     map_find opts.to_lower_camelized_param
