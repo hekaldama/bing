@@ -1,3 +1,16 @@
+=== 0.2.0 / 2011-08-05
+* 4 minor enhancement(s):
+
+  * Added ability for user to specify api version.
+  * Namespacing better, no more mixins, and added rest resource superclass.
+  * Only add core extensions if they are not already defined.
+  * Refined the rest resource and added more coverage.
+
+* 2 unknown:
+
+  * Added tests for bing rest resource and various comments.
+  * Namespaced request object in favor of mixin.
+
 === 0.1.1 / 2011-07-25
 * 5 unknown:
 
