@@ -3,8 +3,8 @@ require 'logger'
 require "minitest/autorun"
 require "webmock"
 
-require "bing"
 require "bing/location"
+require "bing/imagery"
 require "bing/route"
 
 include WebMock::API
