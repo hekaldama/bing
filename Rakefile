@@ -14,6 +14,7 @@ Hoe.spec 'bing' do
 
   self.extra_deps << ['net-http-persistent', '>= 1.6']
   self.extra_deps << ['json', '>= 1.5.3']
+  self.extra_deps << ['geokit', '~> 1.5.0']
 
   self.extra_dev_deps << ['minitest']
   self.extra_dev_deps << ['git']

@@ -13,6 +13,8 @@ class Bing::Request
   def self.get uri
     response = HTTP.request uri
 
+    puts uri if ENV['DEBUG']
+
     raise Bing::BadGateway.bad_response(response.code, uri) unless
       response.code =~ /20\d/
 
