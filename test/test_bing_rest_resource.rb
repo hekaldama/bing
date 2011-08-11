@@ -1,6 +1,10 @@
 require 'helper'
 
 class Bing::RestResource
+  class << self
+    public :format_waypoints
+  end
+
   def initialize *args
   end
 end
@@ -13,10 +17,18 @@ class TestBingRestResource < MiniTest::Unit::TestCase
     assert_equal '/REST/v1', BRR::BASE_PATH
   end
 
-  def test_cls__find
-    stub_request(:any, /.*/).to_return(:status => 200, :body => body)
+  def test_format_waypoints
+    waypoints = ['start', 'end']
 
-    assert_resource BRR._find URI.parse 'http://example.com'
+    assert_equal 'waypoint.0=start&waypoint.1=end',
+      BRR.format_waypoints(waypoints)
+
+    waypoints = ["4.9, -1.2", "1.2, 2.2"]
+
+    assert_equal 'waypoint.0=4.9%2C+-1.2&waypoint.1=1.2%2C+2.2',
+      BRR.format_waypoints(waypoints)
+
+    assert_equal nil, BRR.format_waypoints(nil)
   end
 
   def test_map_uri

@@ -84,19 +84,6 @@ class Bing::Route < Bing::RestResource
     end
   end
 
-  private
-
-  def self.format_waypoints waypoints
-    return unless waypoints
-    ways = []
-
-    waypoints.each_with_index do |way, i|
-      ways << "waypoint.#{i}=#{CGI.escape way}"
-    end
-
-    ways.join '&'
-  end
-
 end
 
 require 'bing/route/itinerary'

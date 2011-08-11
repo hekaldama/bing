@@ -1,11 +1,5 @@
 require 'helper'
 
-class Bing::Route
-  class << self
-    public :format_waypoints
-  end
-end
-
 class TestBingRoute < MiniTest::Unit::TestCase
 
   BR = Bing::Route
@@ -22,20 +16,6 @@ class TestBingRoute < MiniTest::Unit::TestCase
     mock_map_request 200, BR.path, body
 
     route = BR.find :waypoints => ['start', 'end']
-  end
-
-  def test_cls_format_waypoints
-    waypoints = ['start', 'end']
-
-    assert_equal 'waypoint.0=start&waypoint.1=end',
-      BR.format_waypoints(waypoints)
-
-    waypoints = ["4.9, -1.2", "1.2, 2.2"]
-
-    assert_equal 'waypoint.0=4.9%2C+-1.2&waypoint.1=1.2%2C+2.2',
-      BR.format_waypoints(waypoints)
-
-    assert_equal nil, BR.format_waypoints(nil)
   end
 
   def test_cls_path

@@ -1,5 +1,7 @@
 require 'helper'
 
+# TODO need to add more tests.
+
 class TestBingImagery < MiniTest::Unit::TestCase
   BI = Bing::Imagery
 
@@ -7,6 +9,9 @@ class TestBingImagery < MiniTest::Unit::TestCase
     assert_match %r[Imagery/Map/Road], BI.path
     assert_match %r[Imagery/Map/Road], BI.path('Road')
     assert_match %r[Imagery/Map/AerialWithLabels], BI.path('AerialWithLabels')
+
+    assert_match %r[Imagery/Map/Road/funky], BI.path(nil, 'funky')
+    assert_match %r[Imagery/Map/Road/funky%20monkey], BI.path(nil, 'funky monkey')
   end
 
   def test_cls_find
@@ -20,7 +25,7 @@ class TestBingImagery < MiniTest::Unit::TestCase
     mock_map_request 200, Bing::Location.path, location_body
     mock_map_request 200, BI.path, ''
 
-    BI.find :query => "doesn't matter"
+    BI.find_by_query "doesn't matter"
   end
 
 end

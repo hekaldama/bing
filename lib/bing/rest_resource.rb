@@ -7,14 +7,6 @@ class Bing::RestResource
 
   BASE_PATH = "/REST/#{Bing.config[:api_version]}"
 
-  def self._find uri
-    body = JSON.parse Bing::Request.get(uri).body
-
-    body['resourceSets'].first['resources'].map do |resource|
-      new resource
-    end.compact
-  end
-
   def self.map_uri params
     Bing.config[:map_uri].merge(
       "#{path}?key=#{Bing.config[:api_key]}&#{params}"
@@ -22,7 +14,12 @@ class Bing::RestResource
   end
 
   def self.map_find params
-    _find map_uri params
+    resp = Bing::Request.get map_uri params
+    body = JSON.parse resp.body
+
+    body['resourceSets'].first['resources'].map do |resource|
+      new resource
+    end.compact
   end
 
   def self.path subclass_path = nil
@@ -45,6 +42,19 @@ class Bing::RestResource
       :south => south,
       :west  => west,
     }
+  end
+
+  private
+
+  def self.format_waypoints waypoints
+    return unless waypoints
+    ways = []
+
+    waypoints.each_with_index do |way, i|
+      ways << "waypoint.#{i}=#{CGI.escape way}"
+    end
+
+    ways.join '&'
   end
 
 end
