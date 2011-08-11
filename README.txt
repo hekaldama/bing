@@ -14,6 +14,15 @@ Bing api client library that exposes all of Bing's api features.
 
 == SYNOPSIS:
 
+All methods for retrieval strive to just pass through params to Bing. This is
+desired to have Bing be canonical on the API integration with limited mapping
+client side. What this means is that when Bing says it accepts the param
+"centerPoint", you can pass this straight through as :center_point. The values
+are simply strings which means when Bing says you do "centerPoint=47.610,
+-122.107", you will do :center_point => '47.610,-122.107'.
+
+Some code examples:
+
 # For locations
 require 'bing/location'
 
