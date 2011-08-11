@@ -1,21 +1,6 @@
 # -*- ruby -*-
 
 require 'rubygems'
-
-{
-  'hoe'     => '~> 2.10.0',
-  'isolate' => '~> 3.1.1',
-}.each do |gem, version|
-  begin
-    Gem::Specification.find_by_name gem
-  rescue Gem::LoadError
-    puts "Installing #{gem}..."
-    system "gem install #{gem} -v '#{version}' --no-ri --no-rdoc"
-  end
-end
-
-Gem.refresh
-
 require 'hoe'
 
 Hoe.plugin :isolate

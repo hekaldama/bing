@@ -7,6 +7,7 @@ Rakefile
 lib/bing.rb
 lib/bing/core_ext.rb
 lib/bing/errors.rb
+lib/bing/imagery.rb
 lib/bing/location.rb
 lib/bing/request.rb
 lib/bing/rest_resource.rb
@@ -14,6 +15,7 @@ lib/bing/route.rb
 lib/bing/route/itinerary.rb
 test/helper.rb
 test/test_bing.rb
+test/test_bing_imagery.rb
 test/test_bing_location.rb
 test/test_bing_request.rb
 test/test_bing_rest_resource.rb
