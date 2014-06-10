@@ -49,6 +49,7 @@ class Bing::Route < Bing::RestResource
   attr_reader :starting_coordinates
   attr_reader :total_distance
   attr_reader :total_duration
+  attr_reader :total_duration_traffic
   attr_reader :type
 
   def initialize resource
