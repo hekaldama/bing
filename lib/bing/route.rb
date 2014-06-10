@@ -58,6 +58,7 @@ class Bing::Route < Bing::RestResource
     @duration_unit  = resource['durationUnit']
     @total_distance = resource['travelDistance']
     @total_duration = resource['travelDuration']
+    @total_duration_traffic = resource['travelDurationTraffic']
 
     if resource['bbox'] then
       @bounding_box = bbox resource['bbox']
