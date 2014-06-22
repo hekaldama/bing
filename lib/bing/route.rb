@@ -49,6 +49,7 @@ class Bing::Route < Bing::RestResource
   attr_reader :starting_coordinates
   attr_reader :total_distance
   attr_reader :total_duration
+  attr_reader :total_duration_traffic
   attr_reader :type
 
   def initialize resource
@@ -58,6 +59,7 @@ class Bing::Route < Bing::RestResource
     @duration_unit  = resource['durationUnit']
     @total_distance = resource['travelDistance']
     @total_duration = resource['travelDuration']
+    @total_duration_traffic = resource['travelDurationTraffic']
 
     if resource['bbox'] then
       @bounding_box = bbox resource['bbox']
