@@ -1,3 +1,18 @@
+=== 0.3.0 / 2014-06-22
+* 11 minor enhancement(s):
+
+  * Add info about traffic to Bing Maps routes
+  * Added imagery to manifest and rm'd hacks for Travis CI.
+  * Began imagery connection.
+  * Beginning stages of imagery integration.
+  * Hack to build.
+  * Imagery is basically done but is messy.
+  * Merge pull request #1 from skrobul/master
+  * Some readme notes.
+  * add duration in traffic
+  * add getter for traffic time
+  * see if build will succeed this time...
+
 === 0.2.0 / 2011-08-05
 * 4 minor enhancement(s):
 
