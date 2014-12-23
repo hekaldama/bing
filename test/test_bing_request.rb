@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestRequest < MiniTest::Unit::TestCase
+class TestRequest < MiniTest::Test
 
   def setup
     @uri = URI.parse 'http://example.com'

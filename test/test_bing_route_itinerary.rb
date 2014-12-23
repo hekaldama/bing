@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestBingRouteItinerary < MiniTest::Unit::TestCase
+class TestBingRouteItinerary < MiniTest::Test
 
   def test_initialize_with_action
     resource = { 'instruction' => {'maneuverType' => 'turn'} }

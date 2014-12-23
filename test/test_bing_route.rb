@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestBingRoute < MiniTest::Unit::TestCase
+class TestBingRoute < MiniTest::Test
 
   BR = Bing::Route
 
@@ -15,7 +15,7 @@ class TestBingRoute < MiniTest::Unit::TestCase
 
     mock_map_request 200, BR.path, body
 
-    route = BR.find :waypoints => ['start', 'end']
+    BR.find :waypoints => ['start', 'end']
   end
 
   def test_cls_path

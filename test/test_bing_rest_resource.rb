@@ -9,7 +9,7 @@ class Bing::RestResource
   end
 end
 
-class TestBingRestResource < MiniTest::Unit::TestCase
+class TestBingRestResource < MiniTest::Test
 
   BRR = Bing::RestResource # so cold
 

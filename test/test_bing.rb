@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestBing < MiniTest::Unit::TestCase
+class TestBing < MiniTest::Test
 
   def test_defines_version
     assert Bing::VERSION.to_f > 0.0
