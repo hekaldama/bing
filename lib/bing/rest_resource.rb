@@ -15,7 +15,7 @@ class Bing::RestResource
 
   def self.map_find params
     resp = Bing::Request.get map_uri params
-    body = JSON.parse resp.body
+    body = Oj.load resp.body
 
     body['resourceSets'].first['resources'].map do |resource|
       new resource

@@ -13,10 +13,11 @@ Hoe.spec 'bing' do
   self.testlib = :minitest
 
   self.extra_deps << ['net-http-persistent', '>= 1.6']
-  self.extra_deps << ['json', '>= 1.5.3']
+  self.extra_deps << ['oj', '>= 2.11.1']
 
   self.extra_dev_deps << ['minitest']
   self.extra_dev_deps << ['git']
+  self.extra_dev_deps << ['json'] # need to_json
   self.extra_dev_deps << ['webmock']
   self.extra_dev_deps << ['ZenTest']
 

@@ -2,6 +2,7 @@ require 'rubygems'
 require 'logger'
 require "minitest/autorun"
 require "webmock"
+require 'json'
 
 require "bing/location"
 require "bing/imagery"
