@@ -56,6 +56,8 @@ After checking out the source, run:
 This task will install any missing dependencies, run the tests, and generate the
 RDoc.
 
+Test on RapidAPI: https://rapidapi.com/package/BingSearch?utm_source=BingGitHub&utm_medium=button
+
 == LICENSE:
 
 (The MIT License)
